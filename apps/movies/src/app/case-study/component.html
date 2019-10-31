@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<header>
+  <div class="header-content">
+    <button mat-raised-button [matMenuTriggerFor]="type" color="warn">
+      Türler &nbsp; &#x2193;
+    </button>
+    <mat-menu #type="matMenu">
+      <mat-checkbox
+        color="primary"
+        (change)="getAllMovie()"
+        [(ngModel)]="checkAllMovie"
+        class="mat-menu-item"
+        >Tümü</mat-checkbox
+      >
+      <mat-checkbox
+        color="primary"
+        (change)="getMovies()"
+        [(ngModel)]="checkMovies"
+        class="mat-menu-item"
+        >Filmler</mat-checkbox
+      >
+      <mat-checkbox
+        color="primary"
+        (change)="getSeries()"
+        [(ngModel)]="checkSeries"
+        class="mat-menu-item"
+        >Diziler</mat-checkbox
+      >
+    </mat-menu>
+
+    &nbsp; &nbsp;
+
+    <button mat-raised-button [matMenuTriggerFor]="order" color="warn">
+      Sırala &nbsp; &#x2193;
+    </button>
+    <mat-menu #order="matMenu">
+      <button mat-menu-item (click)="sendOrderAsc()">Puana Göre(Azalan)</button>
+      <button mat-menu-item (click)="sendOrderDesc()">Puana Göre(Artan)</button>
+    </mat-menu>
+
+    <h3 class="title">Case Study</h3>
+    <button
+      class="create-movie"
+      mat-raised-button
+      color="warn"
+      routerLink="/create-study"
+    >
+      &#x2b; &nbsp; YENİ KAYIT
+    </button>
+  </div>
+</header>
+
+<div
+  class="content"
+  *ngFor="
+    let item of movieList
+      | paginate: { itemsPerPage: 5, currentPage: pageActual };
+    let i = index
+  "
+>
+  <div class="content-child">
+    <mat-card>
+      <div>
+        <span
+          class="route-edit"
+          (click)="gotoCaseDetails('/edit-study/', item.id)"
+          routerLink="/edit-study/{{ item.id }}"
+          >{{ item.name }}</span
+        >
+        &nbsp;&nbsp;
+        <i
+          (click)="openDialog(item.id, item.name, i)"
+          class="fa w3-spin fa-trash"
+        ></i>
+      </div>
+      <div>
+        <label> &#11088;{{ item.rating }}</label>
+      </div>
+      <div class="vote">
+        <span>Puan Ver</span>
+        <span class="positive-vote">&#8679; 0</span>
+        <span class="negative-vote">&#8681; 0</span>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<pagination-controls
+  previousLabel="Geri"
+  nextLabel="İleri"
+  (pageChange)="pageActual = $event"
+></pagination-controls>

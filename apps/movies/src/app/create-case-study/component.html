@@ -1,0 +1,34 @@
+
+
+<header>
+        <div class="header-content">
+          <button class="back-list" mat-raised-button color="warn" routerLink='/case-study'>
+            &#x21d0; &nbsp; Listeye Dön
+          </button>
+          <h3 class="title">Case Study</h3>
+        </div>
+      </header>
+      
+     
+        <form  class="form-content" [formGroup]="addCaseStudyForm" (ngSubmit)="addMovie()">
+        <mat-radio-group class="radio-group-content" aria-label="Select an option" id="categoryId" name="categoryId" formControlName="categoryId" >
+          <mat-radio-button value="1">Film</mat-radio-button>
+          <mat-radio-button value="2">Dizi</mat-radio-button>
+        </mat-radio-group>
+        <div *ngIf="addCaseStudyForm.get('categoryId').hasError('required')">Kategori girmek zorunludur.</div>
+        <mat-form-field>
+          <input id="name" name="name" formControlName="name" class="movie-name" matInput placeholder="Film / Dizi Adı" />
+          <div *ngIf="addCaseStudyForm.get('name').hasError('required') && addCaseStudyForm.get('name').dirty ">Film ve ya Dizi adı zorunludur.</div>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input type="number" id="rating" name="rating" formControlName="rating" class="rating" matInput placeholder="Puanı" />
+          <div *ngIf="addCaseStudyForm.get('rating').errors && addCaseStudyForm.get('rating').dirty "> Maksimum 10 ve minimum 0 puan girebilirsiniz.Bu alan zorunludur.</div>
+        </mat-form-field>
+      
+        <button  class="button-save" [disabled]="addCaseStudyForm.invalid" (click)="openDialog()"  mat-raised-button color="warn">
+          KAYDET
+        </button>
+      </form>
+    
+      

@@ -1,0 +1,33 @@
+<header>
+  <div class="header-content">
+    <button class="back-list" mat-raised-button color="warn" routerLink='/case-study'>
+      &#x21d0; &nbsp; Listeye Dön
+    </button>
+    <h3 class="title">Case Study</h3>
+    <button class="create-movie" mat-raised-button color="warn" routerLink='/create-study'>
+      &#x2b; &nbsp; YENİ KAYIT
+    </button>
+  </div>
+</header>
+
+
+<form  class="form-content" [formGroup]="editCaseStudyForm" (ngSubmit)="editMovie(movieDetail?.id)">
+  <mat-radio-group  id="categoryId" name="categoryId" formControlName="categoryId" class="radio-group-content" aria-label="Select an option">
+    <mat-radio-button [checked]="checkMovie" value="1">Film</mat-radio-button>
+    <mat-radio-button [checked]="checkSeries" value="2">Dizi</mat-radio-button>
+  </mat-radio-group>
+  <div *ngIf="editCaseStudyForm.get('categoryId').hasError('required')">Kategori girmek zorunludur.</div>
+  <mat-form-field>
+    <input id="name" name="name" formControlName="name" class="movie-name" value="{{movieDetail?.name}}" matInput placeholder="Film / Dizi Adı" />
+    <div *ngIf="editCaseStudyForm.get('name').hasError('required') && editCaseStudyForm.get('name').dirty ">Film ve ya Dizi adı zorunludur.</div>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="number" id="rating" name="rating" formControlName="rating" class="rating"  value="{{movieDetail?.rating}}" matInput placeholder="Puanı" />
+    <div *ngIf="editCaseStudyForm.get('rating').errors && editCaseStudyForm.get('rating').dirty "> Maksimum 10 ve minimum 0 puan girebilirsiniz.Bu alan zorunludur.</div>
+  </mat-form-field>
+
+  <button class="button-save" [disabled]="editCaseStudyForm.invalid" (click)="openDialog()" mat-raised-button color="warn">
+    KAYDET
+  </button>
+</form>

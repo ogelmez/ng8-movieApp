@@ -1,0 +1,64 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "name": "Baba(1972)",
+      "categoryId": "1",
+      "rating": 10
+    },
+    {
+      "name": "Baba 2(1974)",
+      "categoryId": 1,
+      "rating": 9,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Kara Şövalye(2008)",
+      "rating": 8,
+      "categoryId": 1
+    },
+    {
+      "id": 4,
+      "name": "Örümcek Adam(2005)",
+      "rating": 8,
+      "categoryId": 1
+    },
+    {
+      "id": 5,
+      "name": "Matrix(2000)",
+      "rating": 7,
+      "categoryId": 1
+    },
+    {
+      "id": 6,
+      "name": "Yenilmezler(2010)",
+      "rating": 5,
+      "categoryId": 1
+    },
+    {
+      "id": 7,
+      "name": "Taht Oyunları(2011)",
+      "rating": 7,
+      "categoryId": 2
+    },
+    {
+      "id": 8,
+      "name": "Breaking Bad(2008)",
+      "rating": 8,
+      "categoryId": 2
+    },
+    {
+      "id": 11,
+      "name": "The Hundred(2015)",
+      "rating": 6,
+      "categoryId": 2
+    },
+    {
+      "name": "Maske(2000)",
+      "categoryId": "1",
+      "rating": 5,
+      "id": 12
+    }
+  ]
+}

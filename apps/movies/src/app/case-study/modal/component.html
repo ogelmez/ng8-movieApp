@@ -1,0 +1,15 @@
+<div class="container">
+  <div>
+    <i class="fa w3-xxxlarge w3-spin fa-trash"></i>
+  </div>
+<div>
+
+  <h2>{{data.name}} Silmek istediğine emin misin?</h2>
+</div>
+<div class="modal-buttons">
+  <button  mat-raised-button (click)="onNoClick()" color="warn">İptal
+  </button>
+  <button  mat-raised-button (click)="deleteCase(data.id, data.index)" [mat-dialog-close]=""  color="warn">Evet
+  </button>
+</div>
+</div>
